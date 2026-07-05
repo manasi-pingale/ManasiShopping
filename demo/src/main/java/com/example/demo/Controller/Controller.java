@@ -1,21 +1,35 @@
 package com.example.demo.Controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.DTO.Products;
+import com.example.demo.Service.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class Controller {
 
-    @GetMapping("/")
-    public String homePage()
-    {
-        return "this is home page";
+    @Autowired
+    ServiceImpl serviceImpl;
+
+    @GetMapping("/getProducts")
+    public List<Products> getProducts() {
+        return serviceImpl.getProducts();
     }
 
-    @GetMapping("/about")
-    public String abouPage()
-    {
-        return "this is about page";
+    // Get product by ID
+    @GetMapping("/getProductsById/{id}")
+    public Products getProductById(@PathVariable int id) {
+        return serviceImpl.getProductById(id);
     }
+
+    // Add a new product
+    @PostMapping("/addProduct")
+    public String addProduct(@RequestBody Products product) {
+        return serviceImpl.addProduct(product);
+    }
+
+
 }
