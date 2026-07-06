@@ -1,10 +1,14 @@
 package com.example.demo.DTO;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import org.springframework.stereotype.Component;
 
 @Component
+@Entity
 public class Products {
 
+    @Id
     private int id;
     private String name;
     private int price;

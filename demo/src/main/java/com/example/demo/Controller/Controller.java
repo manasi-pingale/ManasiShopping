@@ -31,5 +31,20 @@ public class Controller {
         return serviceImpl.addProduct(product);
     }
 
+    @PutMapping("/updateProduct")
+    public String updateProducts(@RequestBody Products products)
+    {
+        return serviceImpl.updateProduct(products);
+    }
+
+    @PutMapping("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable int id)
+    {
+        return serviceImpl.deleteProduct(id);
+    }
+
+
+
+
 
 }
